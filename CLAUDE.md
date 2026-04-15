@@ -39,25 +39,78 @@ todo-vue-components/
 
 ## Development Guidelines
 
-### Adding a New Component
+### Component Workflow (step-by-step)
 
-1. Create a directory under `packages/components/src/<component-name>/`
-2. Structure:
-   ```
-   packages/components/src/button/
-   ├── button.ts       # props, emits, types
-   ├── button.vue      # component template
-   └── index.ts        # export with withInstall()
-   ```
-3. Export from `packages/components/src/index.ts`
-4. Preview in `play/src/App.vue`
+#### 1. Create the component directory
+```
+packages/components/src/<name>/
+├── <name>.ts      # Props definition (buttonProps), emits, TS types
+├── <name>.vue     # SFC — script setup + template + scoped style
+└── index.ts       # withInstall() wrapper + re-export types
+```
+
+#### 2. Define props & emits in `<name>.ts`
+```ts
+import type { ExtractPropTypes, PropType } from 'vue'
+import type { ComponentSize } from '@todo-vc/constants'
+
+export const myProps = { ... } as const
+export const myEmits = { click: (e: MouseEvent) => e instanceof MouseEvent }
+export type MyProps = ExtractPropTypes<typeof myProps>
+```
+- Keep shared enum values (sizes, types, statuses) in `@todo-vc/constants`
+- Use `as const` on the props object so TypeScript can infer literal types
+
+#### 3. Implement the SFC (`<name>.vue`)
+```ts
+defineOptions({ name: 'TMyComponent' })      // PascalCase, T-prefix
+const props = defineProps(myProps)
+const emit  = defineEmits(myEmits)
+const ns    = useNamespace('my-component')   // → 'tvc-my-component'
+defineExpose({ ref: elRef })                 // expose native element
+```
+**Styling rule:** Use static UnoCSS class-map objects so the scanner can
+extract every class at build time. Never build class strings via interpolation.
+```ts
+const TYPE_CLASSES = {
+  primary: 'bg-blue-500 text-white border-blue-500 hover:bg-blue-400',
+  danger:  'bg-red-500 text-white border-red-500 hover:bg-red-400',
+} as const
+```
+
+#### 4. Export from `index.ts`
+```ts
+import { withInstall } from '@todo-vc/utils'
+import MyComponent from './my-component.vue'
+export const TMyComponent = withInstall(MyComponent)
+export type { MyProps } from './my-component'
+```
+
+#### 5. Register in `packages/components/src/index.ts`
+```ts
+export * from './my-component'
+```
+
+#### 6. Preview in `play/src/App.vue`
+Import from `todo-vue-components` (the public entry) and cover every prop,
+slot, emit, and edge case in the playground.
 
 ### Naming Conventions
 
-- Components: PascalCase (`TButton`, `TInput`)
-- Files: kebab-case (`button.vue`, `use-namespace.ts`)
-- CSS prefix: `tvc-` (via `useNamespace` hook)
-- Internal packages: `@todo-vc/*`
+| Item | Convention | Example |
+|---|---|---|
+| Component | PascalCase with T-prefix | `TButton`, `TInput` |
+| Files | kebab-case | `button.vue`, `use-namespace.ts` |
+| CSS class prefix | `tvc-` via `useNamespace` | `tvc-button`, `tvc-button__icon` |
+| Internal packages | `@todo-vc/*` scoped | `@todo-vc/hooks` |
+| Slot names | kebab-case | `#icon`, `#icon-right` |
+
+### Accessibility Checklist (every component)
+- `aria-disabled` on disabled state (not only HTML `disabled`)
+- `aria-busy` on loading state
+- `aria-label` prop for icon-only variants
+- `tabindex="-1"` when disabled (so Tab skips it)
+- `role` if not using semantic HTML element
 
 ### Package Dependencies (build order)
 
