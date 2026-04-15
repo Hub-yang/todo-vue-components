@@ -1,0 +1,14 @@
+{
+  "name": "@todo-vc/play",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "todo-vue-components": "workspace:*"
+  }
+}

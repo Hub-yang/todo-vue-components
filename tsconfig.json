@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/constants" },
+    { "path": "./packages/utils" },
+    { "path": "./packages/hooks" },
+    { "path": "./packages/components" },
+    { "path": "./packages/todo-vue-components" },
+    { "path": "./play" }
+  ]
+}

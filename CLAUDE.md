@@ -12,23 +12,71 @@ This file provides guidance to Claude Code when working in this repository.
 - **Development Branch**: `claude/init-vue-components-lib-66tii`
 - **Main Branch**: `main`
 
-## Architecture (TBD)
+## Tech Stack
 
-Tech stack and project architecture are being decided. This section will be updated once the stack is finalized.
+- **Runtime**: Vue 3.5+ with Composition API + TypeScript 5.8+
+- **Build**: Vite 6+
+- **Monorepo**: pnpm workspace
+- **Styles**: UnoCSS (presetUno + presetAttributify)
+- **Linting**: ESLint 9 flat config + typescript-eslint + eslint-plugin-vue
+
+## Repository Structure
+
+```
+todo-vue-components/
+├── packages/
+│   ├── constants/             # @todo-vc/constants — shared constants & types
+│   ├── utils/                 # @todo-vc/utils — shared utility functions
+│   ├── hooks/                 # @todo-vc/hooks — shared Vue composables
+│   ├── components/            # @todo-vc/components — all UI components
+│   └── todo-vue-components/   # todo-vue-components — public entry (re-exports all)
+├── play/                      # @todo-vc/play — Vite dev playground
+├── typings/                   # Global TypeScript declarations
+├── uno.config.ts              # UnoCSS configuration
+├── tsconfig.base.json         # Shared TS compiler options
+└── tsconfig.json              # Root TS project references
+```
 
 ## Development Guidelines
 
-- All new components go under `packages/` (one directory per component)
-- Each component must include: source code, types, and a demo/story
-- Components should be written in Vue 3 Composition API with TypeScript
-- Follow consistent naming: PascalCase for components, kebab-case for files
+### Adding a New Component
+
+1. Create a directory under `packages/components/src/<component-name>/`
+2. Structure:
+   ```
+   packages/components/src/button/
+   ├── button.ts       # props, emits, types
+   ├── button.vue      # component template
+   └── index.ts        # export with withInstall()
+   ```
+3. Export from `packages/components/src/index.ts`
+4. Preview in `play/src/App.vue`
+
+### Naming Conventions
+
+- Components: PascalCase (`TButton`, `TInput`)
+- Files: kebab-case (`button.vue`, `use-namespace.ts`)
+- CSS prefix: `tvc-` (via `useNamespace` hook)
+- Internal packages: `@todo-vc/*`
+
+### Package Dependencies (build order)
+
+```
+constants → utils → hooks → components → todo-vue-components
+```
+
+## Commands
+
+```bash
+pnpm dev          # Start play app dev server
+pnpm build        # Build all packages
+pnpm typecheck    # Type check all packages
+pnpm lint         # Lint all files
+pnpm lint:fix     # Lint and auto-fix
+```
 
 ## Git Workflow
 
 - Develop on the designated feature branch
 - Commit messages should be clear and descriptive
 - Push with: `git push -u origin <branch-name>`
-
-## Commands
-
-Commands will be added here once the tech stack and tooling are finalized.
