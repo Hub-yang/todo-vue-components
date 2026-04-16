@@ -17,29 +17,6 @@ defineExpose({ ref: buttonRef })
 // ─── Computed state ───────────────────────────────────────────────────────────
 const isDisabled = computed(() => props.disabled || props.loading)
 
-/**
- * Class list built from static string maps so UnoCSS's static scanner
- * can extract every class at build time — no dynamic string interpolation.
- */
-const classes = computed(() => [
-  ns.b(),
-  TYPE_CLASSES[props.type],
-  SIZE_CLASSES[props.size],
-  props.plain && PLAIN_CLASSES[props.type],
-  props.text && TEXT_CLASSES[props.type],
-  props.link && LINK_CLASSES[props.type],
-  props.round && 'rounded-full',
-  props.circle && CIRCLE_SIZE_CLASSES[props.size],
-  props.block && 'w-full',
-  ns.is('disabled', isDisabled.value),
-  ns.is('loading', props.loading),
-  ns.is('round', props.round),
-  ns.is('circle', props.circle),
-  ns.is('plain', props.plain),
-  ns.is('text', props.text),
-  ns.is('link', props.link),
-])
-
 // ─── Click handler ────────────────────────────────────────────────────────────
 function handleClick(event: MouseEvent) {
   // Guard against clicks that bubble through pointer-events-none (e.g. child elements)
@@ -104,6 +81,29 @@ const LINK_CLASSES = {
   danger: 'text-red-500 border-transparent bg-transparent hover:text-red-400 hover:underline',
   info: 'text-gray-400 border-transparent bg-transparent hover:text-gray-300 hover:underline',
 } as const
+
+/**
+ * Class list built from static string maps so UnoCSS's static scanner
+ * can extract every class at build time — no dynamic string interpolation.
+ */
+const classes = computed(() => [
+  ns.b(),
+  TYPE_CLASSES[props.type],
+  SIZE_CLASSES[props.size],
+  props.plain && PLAIN_CLASSES[props.type],
+  props.text && TEXT_CLASSES[props.type],
+  props.link && LINK_CLASSES[props.type],
+  props.round && 'rounded-full',
+  props.circle && CIRCLE_SIZE_CLASSES[props.size],
+  props.block && 'w-full',
+  ns.is('disabled', isDisabled.value),
+  ns.is('loading', props.loading),
+  ns.is('round', props.round),
+  ns.is('circle', props.circle),
+  ns.is('plain', props.plain),
+  ns.is('text', props.text),
+  ns.is('link', props.link),
+])
 </script>
 
 <template>
