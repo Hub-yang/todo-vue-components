@@ -2,8 +2,8 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "outDir": ".ts-cache",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "outDir": ".ts-cache"
   },
   "references": [
     { "path": "../packages/constants" },

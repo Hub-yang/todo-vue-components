@@ -1,7 +1,7 @@
 {
   "name": "@todo-vc/components",
-  "version": "0.0.1",
   "type": "module",
+  "version": "0.0.1",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -15,12 +15,12 @@
     "build": "vite build",
     "typecheck": "vue-tsc --noEmit"
   },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
   "dependencies": {
     "@todo-vc/constants": "workspace:*",
     "@todo-vc/hooks": "workspace:*",
     "@todo-vc/utils": "workspace:*"
-  },
-  "peerDependencies": {
-    "vue": "^3.5.0"
   }
 }

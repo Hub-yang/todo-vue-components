@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import { useNamespace } from '@todo-vc/hooks'
+import { computed, ref } from 'vue'
 import { buttonEmits, buttonProps } from './button'
 
 defineOptions({ name: 'TButton' })
@@ -58,21 +58,21 @@ const TYPE_CLASSES = {
   primary: 'bg-blue-500 text-white border-blue-500 hover:bg-blue-400 hover:border-blue-400 active:bg-blue-600 active:border-blue-600 focus-visible:ring-blue-500',
   success: 'bg-green-500 text-white border-green-500 hover:bg-green-400 hover:border-green-400 active:bg-green-600 active:border-green-600 focus-visible:ring-green-500',
   warning: 'bg-amber-500 text-white border-amber-500 hover:bg-amber-400 hover:border-amber-400 active:bg-amber-600 active:border-amber-600 focus-visible:ring-amber-500',
-  danger:  'bg-red-500 text-white border-red-500 hover:bg-red-400 hover:border-red-400 active:bg-red-600 active:border-red-600 focus-visible:ring-red-500',
-  info:    'bg-gray-400 text-white border-gray-400 hover:bg-gray-300 hover:border-gray-300 active:bg-gray-500 active:border-gray-500 focus-visible:ring-gray-400',
+  danger: 'bg-red-500 text-white border-red-500 hover:bg-red-400 hover:border-red-400 active:bg-red-600 active:border-red-600 focus-visible:ring-red-500',
+  info: 'bg-gray-400 text-white border-gray-400 hover:bg-gray-300 hover:border-gray-300 active:bg-gray-500 active:border-gray-500 focus-visible:ring-gray-400',
 } as const
 
 const SIZE_CLASSES = {
-  large:   'h-10 px-5 text-base gap-2',
+  large: 'h-10 px-5 text-base gap-2',
   default: 'h-8 px-4 text-sm gap-1.5',
-  small:   'h-7 px-3 text-xs gap-1',
+  small: 'h-7 px-3 text-xs gap-1',
 } as const
 
 // Circle removes padding and enforces square aspect via fixed w/h
 const CIRCLE_SIZE_CLASSES = {
-  large:   'rounded-full p-0 w-10 h-10',
+  large: 'rounded-full p-0 w-10 h-10',
   default: 'rounded-full p-0 w-8 h-8',
-  small:   'rounded-full p-0 w-7 h-7',
+  small: 'rounded-full p-0 w-7 h-7',
 } as const
 
 // Plain: tinted background, colored border, fills solid on hover
@@ -81,8 +81,8 @@ const PLAIN_CLASSES = {
   primary: 'bg-blue-50 text-blue-500 border-blue-200 hover:bg-blue-500 hover:text-white hover:border-blue-500',
   success: 'bg-green-50 text-green-500 border-green-200 hover:bg-green-500 hover:text-white hover:border-green-500',
   warning: 'bg-amber-50 text-amber-500 border-amber-200 hover:bg-amber-500 hover:text-white hover:border-amber-500',
-  danger:  'bg-red-50 text-red-500 border-red-200 hover:bg-red-500 hover:text-white hover:border-red-500',
-  info:    'bg-gray-100 text-gray-500 border-gray-200 hover:bg-gray-500 hover:text-white hover:border-gray-500',
+  danger: 'bg-red-50 text-red-500 border-red-200 hover:bg-red-500 hover:text-white hover:border-red-500',
+  info: 'bg-gray-100 text-gray-500 border-gray-200 hover:bg-gray-500 hover:text-white hover:border-gray-500',
 } as const
 
 // Text: no border, no background — only colored text
@@ -91,8 +91,8 @@ const TEXT_CLASSES = {
   primary: 'text-blue-500 border-transparent bg-transparent hover:bg-blue-50',
   success: 'text-green-500 border-transparent bg-transparent hover:bg-green-50',
   warning: 'text-amber-500 border-transparent bg-transparent hover:bg-amber-50',
-  danger:  'text-red-500 border-transparent bg-transparent hover:bg-red-50',
-  info:    'text-gray-400 border-transparent bg-transparent hover:bg-gray-50',
+  danger: 'text-red-500 border-transparent bg-transparent hover:bg-red-50',
+  info: 'text-gray-400 border-transparent bg-transparent hover:bg-gray-50',
 } as const
 
 // Link: text-only, underline on hover, no border/bg
@@ -101,8 +101,8 @@ const LINK_CLASSES = {
   primary: 'text-blue-500 border-transparent bg-transparent hover:text-blue-400 hover:underline',
   success: 'text-green-500 border-transparent bg-transparent hover:text-green-400 hover:underline',
   warning: 'text-amber-500 border-transparent bg-transparent hover:text-amber-400 hover:underline',
-  danger:  'text-red-500 border-transparent bg-transparent hover:text-red-400 hover:underline',
-  info:    'text-gray-400 border-transparent bg-transparent hover:text-gray-300 hover:underline',
+  danger: 'text-red-500 border-transparent bg-transparent hover:text-red-400 hover:underline',
+  info: 'text-gray-400 border-transparent bg-transparent hover:text-gray-300 hover:underline',
 } as const
 </script>
 

@@ -1,2 +1,2 @@
-export { isString, isNumber, isBoolean, isObject, isFunction, isArray, isUndefined, isNil } from './types'
+export { isArray, isBoolean, isFunction, isNil, isNumber, isObject, isString, isUndefined } from './types'
 export { withInstall } from './with-install'

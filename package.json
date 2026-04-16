@@ -1,8 +1,12 @@
 {
   "name": "todo-vue-components",
+  "type": "module",
   "version": "0.0.1",
   "private": true,
-  "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
   "scripts": {
     "dev": "pnpm -F @todo-vc/play dev",
     "build": "pnpm -r --filter=./packages/* run build",
@@ -11,21 +15,18 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@eslint/js": "^9.22.0",
+    "@antfu/eslint-config": "^8.2.0",
     "@types/node": "^22.13.0",
+    "@unocss/eslint-plugin": "^66.6.8",
     "@unocss/reset": "^66.1.0",
     "@vitejs/plugin-vue": "^5.2.3",
-    "eslint": "^9.22.0",
+    "eslint": "^10.2.0",
+    "eslint-plugin-format": "^2.0.1",
     "eslint-plugin-vue": "^9.32.0",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.0",
     "unocss": "^66.1.0",
     "vite": "^6.3.0",
     "vue": "^3.5.13",
     "vue-tsc": "^2.2.10"
-  },
-  "engines": {
-    "node": ">=18.0.0",
-    "pnpm": ">=9.0.0"
   }
 }

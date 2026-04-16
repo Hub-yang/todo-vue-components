@@ -1,5 +1,5 @@
-import type { Component, ExtractPropTypes, PropType } from 'vue'
 import type { ButtonNativeType, ButtonType, ComponentSize } from '@todo-vc/constants'
+import type { Component, ExtractPropTypes, PropType } from 'vue'
 
 export const buttonProps = {
   /** Visual variant of the button */

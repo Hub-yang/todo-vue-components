@@ -1,7 +1,7 @@
 {
   "name": "todo-vue-components",
-  "version": "0.0.1",
   "type": "module",
+  "version": "0.0.1",
   "description": "A custom Vue 3 component library",
   "keywords": ["vue", "vue3", "components", "ui", "typescript"],
   "exports": {
@@ -17,13 +17,13 @@
     "build": "vite build",
     "typecheck": "vue-tsc --noEmit"
   },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
   "dependencies": {
     "@todo-vc/components": "workspace:*",
     "@todo-vc/constants": "workspace:*",
     "@todo-vc/hooks": "workspace:*",
     "@todo-vc/utils": "workspace:*"
-  },
-  "peerDependencies": {
-    "vue": "^3.5.0"
   }
 }
