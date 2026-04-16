@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist",
+    "declarationDir": "dist",
+    "types": ["vite/client"]
+  },
+  "references": [
+    { "path": "../constants" },
+    { "path": "../utils" },
+    { "path": "../hooks" }
+  ],
+  "include": ["src", "../../typings"]
+}

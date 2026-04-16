@@ -1,0 +1,28 @@
+# todo-vue-components
+
+A custom Vue 3 component library for collecting and sharing reusable UI components built during real-world development.
+
+## Status
+
+🚧 In active development — architecture and tech stack being finalized.
+
+## Goal
+
+This library serves as a growing collection of custom Vue components, built with:
+
+- Strong typing via TypeScript
+- Vue 3 Composition API
+- Consistent documentation and demos per component
+- Easy installation and usage
+
+## Components
+
+Components will be listed here as they are added.
+
+## Contributing
+
+This is a personal component library. Component suggestions and feedback are welcome via Issues.
+
+## License
+
+MIT
