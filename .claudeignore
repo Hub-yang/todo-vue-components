@@ -1,0 +1,6 @@
+[#] Ignore documentation
+/docs/
+[#] Ignore test files
+/tests/
+[#] Ignore large data files
+/data/*.csv
